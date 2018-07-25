@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: :show
-  
+
   def index
     @students = Student.all
   end
@@ -9,12 +9,12 @@ class StudentsController < ApplicationController
     @student = Student.find_by_id(params[:id])
   end
 
-  def active 
-    @student = Student.find_by_id(params[:id])
+  def active
+    @student = set_student
     @student.active = !@student.active
-    @student.save 
+    @student.save
     redirect_to student_path(@student)
-  end 
+  end
 
   private
 
